@@ -9,17 +9,28 @@ const PENNY = 0.01
 
 const amount = Number(readlineSync.question("\nEnter a dollar amount: "));
 
+let remainderQuarter = amount % QUARTER
+let minusRemainderQuarter = amount - remainderQuarter
+let quarterAmount = minusRemainderQuarter / QUARTER
+let quartersNeeded = Math.ceil(quarterAmount)
+
+let remainderDime = remainderQuarter % DIME
+let minusRemainderDime = remainderQuarter - remainderDime
+let dimeAmount = minusRemainderDime / DIME
+let dimesNeeded = Math.ceil(dimeAmount)
+
+let remainderNickel = remainderDime % NICKEL
+let minusRemainderNickel = remainderDime - remainderNickel
+let nickelAmount = minusRemainderNickel / NICKEL
+let nickelsNeeded = Math.ceil(nickelAmount)
+
+let pennyAmount = remainderNickel / PENNY
+let penniesNeeded = Math.ceil(pennyAmount)
+
 if (Number.isNaN(amount)) {
     console.log("Invalid.")
 } else if (amount < MIN || amount > MAX) {
-    console.log("Invalid.")
+    console.log("\nInvalid.")
 } else {
-    let remainderQuarter = amount % QUARTER
-    let quarterAmount = remainderQuarter / QUARTER
-
-    let remainderDime = remainderQuarter % DIME
-    let dimeAmount = remainderDime / DIME
-
-    let remainderNickel = remainderDime % NICKEL
-    let nickelAmount = remainderNickel / NICKEL
+    console.log("\n" + quartersNeeded + " quarters, " + dimesNeeded + " dimes, " + nickelsNeeded + " nickels, and " + penniesNeeded + " pennies.")
 }

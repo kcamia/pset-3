@@ -9,7 +9,6 @@ const PENNY = 0.01
 
 const amount = Number(readlineSync.question("\nEnter a dollar amount: "));
 
-let remainderQuarter = amount % QUARTER
 let minusRemainderQuarter = amount - remainderQuarter
 let quarterAmount = minusRemainderQuarter / QUARTER
 let quartersNeeded = Math.ceil(quarterAmount)

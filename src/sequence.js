@@ -1,24 +1,29 @@
 const readlineSync = require("readline-sync");
 
-const MINIMUM = Number.MIN_SAFE_INTEGER
-const MAXIMUM = Number.MAX_SAFE_INTEGER
+const MIN = Number.MIN_SAFE_INTEGER
+const MAX = Number.MAX_SAFE_INTEGER
 
-let firstNumber = Number(readlineSync.question("\nEnter three numbers.\n "));
-let secondNumber = Number(readlineSync.question(""));
-let thirdNumber = Number(readlineSync.question(""));
+let first = Number(readlineSync.question("\nEnter three numbers.\n\n"));
+let second = Number(readlineSync.question(""));
+let third = Number(readlineSync.question(""));
 
-let numbers = [firstNumber, secondNumber, thirdNumber]
+let threeMinusTwo = third - second
+let twoMinusOne = second - first
 
-
-if (Number.isNaN(firstNumber) || Number.isNaN(secondNumber)) {
+if (Number.isNaN(first) || Number.isNaN(second) || Number.isNaN(third)) {
   console.log("\nInvalid.")
-}
-if (Number.isNaN(thirdNumber)) {
+} else if (first < MIN || first > MAX || second < MIN || second > MAX || third < MIN || third > MAX) {
   console.log("\nInvalid.")
-}
-
-
-
-if () {
-  console.log("")
+} else if (first === second === third) {
+  console.log("\nEqual.")
+} else if (first < second && second < third && twoMinusOne === threeMinusTwo) {
+  console.log("\nStrictly increasing.")
+} else if (first < second && second < third) {
+  console.log("\nIncreasing.")
+} else if (first > second && second > third && threeMinusTwo === twoMinusOne) {
+  console.log("\nStrictly decreasing.")
+} else if (first > second && second > third) {
+  console.log("\nDecreasing.")
+} else {
+  console.log("\nUnordered.")
 }
